@@ -149,6 +149,7 @@ class AuthController {
   // get access token by refresh token
   async refresh_token(req, res) {
     const { refresh_token } = req.cookies;
+    console.log(req.cookies);
     try {
       const check = await jwt.verify(refresh_token, process.env.REFRESH_TOKEN);
       const user = await User.findById(check._id).select("-password");
