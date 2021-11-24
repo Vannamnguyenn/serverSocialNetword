@@ -6,8 +6,17 @@ const PORT = process.env.PORT || 5000;
 const connectDB = require("./config/connectDB");
 const initRouter = require("./router/index");
 
+const origin =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:5000"
+    : "https://social-network-app-fake.netlify.app/";
+
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 
 connectDB();
