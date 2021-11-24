@@ -7,7 +7,7 @@ const connectDB = require("./config/connectDB");
 const initRouter = require("./router/index");
 
 app.use(express.json());
-app.use(cors({ origin: "*", credentials: true }));
+app.use(cors());
 app.use(cookieParser());
 
 connectDB();
