@@ -8,15 +8,14 @@ const initRouter = require("./router/index");
 
 const origin =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:3000"
+    ? "http://localhost:5000"
     : "https://social-network-app-fake.netlify.app";
 
 app.use(express.json());
 app.use(
   cors({
-    origin: "*",
-    credentials: true, //access-control-allow-credentials:true
-    optionSuccessStatus: 200,
+    credentials: true,
+    origin: "https://social-network-app-fake.netlify.app",
   })
 );
 app.use(cookieParser());
@@ -25,6 +24,6 @@ connectDB();
 
 initRouter(app);
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
   console.log(`App is running on port ${PORT}`);
 });
