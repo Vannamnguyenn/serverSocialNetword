@@ -14,8 +14,9 @@ const origin =
 app.use(express.json());
 app.use(
   cors({
-    credentials: true,
-    origin: "https://social-network-app-fake.netlify.app",
+    origin: "*",
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
   })
 );
 app.use(cookieParser());
