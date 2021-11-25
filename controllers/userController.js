@@ -107,7 +107,7 @@ class UserController {
         },
       },
       {
-        $sample: { size: 3 },
+        $sample: { size: 10 },
       },
       {
         $lookup: {
