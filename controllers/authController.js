@@ -93,7 +93,6 @@ class AuthController {
       return res.status(201).json({
         success: true,
         msg: "Login successfully !",
-        cookiesOptions,
         refresh_token,
         user,
         access_token,
@@ -134,7 +133,6 @@ class AuthController {
       return res.status(201).json({
         success: true,
         msg: "Login successfully !",
-        cookiesOptions,
         refresh_token,
         user: newUser,
         access_token,
@@ -156,16 +154,23 @@ class AuthController {
   }
   // get access token by refresh token
   async refresh_token(req, res) {
-    const { refresh_token } = req.cookies;
-    console.log(req.cookies);
-    try {
-      const check = await jwt.verify(refresh_token, process.env.REFRESH_TOKEN);
-      const user = await User.findById(check._id).select("-password");
-      const access_token = generateAccessToken({ _id: user._id });
-      return res.status(201).json({ success: true, access_token, user });
-    } catch (error) {
-      return res.status(400).json({ success: false, msg: "Refresh toke is invalid !" });
+    const refresh_token;
+    const cookies = req.cookies;
+    // token from authorization
+    if (cookies.refresh_token) {
+      refresh_token = cookies.refresh_token;
     }
+    else {
+      refresh_token  = req.headers.authorization;
+    }
+      try {
+        const check = await jwt.verify(refresh_token, process.env.REFRESH_TOKEN);
+        const user = await User.findById(check._id).select("-password");
+        const access_token = generateAccessToken({ _id: user._id });
+        return res.status(201).json({ success: true, access_token, user });
+      } catch (error) {
+        return res.status(400).json({ success: false, msg: "Refresh toke is invalid !" });
+      }
   }
   // mail to forgot password
   async mailForgotPassword(req, res) {
