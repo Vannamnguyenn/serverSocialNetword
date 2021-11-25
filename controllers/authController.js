@@ -39,6 +39,8 @@ class AuthController {
     delete newUser.password;
     return res.status(201).json({
       success: true,
+      refresh_token,
+      cookiesOptions,
       msg: "Create successfully !",
       user: newUser,
       access_token,
@@ -59,6 +61,8 @@ class AuthController {
     return res.status(201).json({
       success: true,
       msg: "Login successfully !",
+      cookiesOptions,
+      refresh_token,
       user,
       access_token,
     });
@@ -89,6 +93,8 @@ class AuthController {
       return res.status(201).json({
         success: true,
         msg: "Login successfully !",
+        cookiesOptions,
+        refresh_token,
         user,
         access_token,
       });
@@ -128,6 +134,8 @@ class AuthController {
       return res.status(201).json({
         success: true,
         msg: "Login successfully !",
+        cookiesOptions,
+        refresh_token,
         user: newUser,
         access_token,
       });

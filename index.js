@@ -8,7 +8,7 @@ const initRouter = require("./router/index");
 
 const origin =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:5000"
+    ? "http://localhost:3000"
     : "https://social-network-app-fake.netlify.app";
 
 app.use(express.json());
@@ -24,6 +24,6 @@ connectDB();
 
 initRouter(app);
 
-app.listen(PORT, () => {
+app.listen(5000, () => {
   console.log(`App is running on port ${PORT}`);
 });
