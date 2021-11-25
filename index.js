@@ -8,14 +8,14 @@ const initRouter = require("./router/index");
 
 const origin =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:5000"
+    ? "http://localhost:3000"
     : "https://social-network-app-fake.netlify.app";
 
 app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: "https://social-network-app-fake.netlify.app",
+    origin: ["https://social-network-app-fake.netlify.app", "http://localhost:3000"],
   })
 );
 app.use(cookieParser());

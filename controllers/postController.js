@@ -29,17 +29,12 @@ class PostController {
         images: images || [],
       });
       await newPost.save();
-      await newPost.populate("user likes").populate({
-        path: "comments",
-        populate: {
-          path: "user likes",
-          select: "-password",
-        },
-      });
+      await newPost.populate("user likes");
       return res
         .status(201)
         .json({ success: true, msg: "Post created successfully !", post: newPost });
     } catch (error) {
+      console.log(error);
       return res.status(500).json(serverError);
     }
   }
