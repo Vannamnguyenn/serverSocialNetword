@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const fetch = require("node-fetch");
 const { sendMaiWithPass } = require("../util/SendMail/MailWithPass");
+const sendMail = require("../util/SendMail/Mailer");
 const { google } = require("googleapis");
 const { OAuth2 } = google.auth;
 
@@ -185,11 +186,12 @@ class AuthController {
     const tokenResetPass = generateForgotPassToken({ _id: user._id });
     const url = `${process.env.CLIENT_URL}/reset-password/${tokenResetPass}`;
     try {
-      await sendMaiWithPass(
-        email,
-        "GET PASSWORD",
-        `<a href="${url}" style="font-size: 1.3rem;display: block;margin : 1rem;">CLICK TO RESET PASSWORD</a>`
-      );
+      /* await sendMaiWithPass(
+      //   email,
+      //   "GET PASSWORD",
+      //   `<a href="${url}" style="font-size: 1.3rem;display: block;margin : 1rem;">CLICK TO RESET PASSWORD</a>`
+       );*/
+      await sendMail(email, "RESET PASSWORD", url, "Reset password");
       return res.status(200).json({
         success: true,
         msg: "Request successfully please check your email !",

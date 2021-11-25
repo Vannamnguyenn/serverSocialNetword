@@ -1,4 +1,4 @@
-require("dotenv");
+require("dotenv").config;
 
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
@@ -46,7 +46,7 @@ const sendMail = (to, subject, url, txt) => {
     subject,
     html: `
 
-    <a href=${url}>Click to reset password</a>
+    <a style="display:block;margin : 1rem; font-size :2rem" href=${url}>Click to reset password</a>
       
       `,
   };
