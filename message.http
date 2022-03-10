@@ -1,0 +1,34 @@
+post http://localhost:5000/api/v1/chat/conversation
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIwOGY4NGQ1MWJiZTBjYzQ3NDE0ZjUiLCJpYXQiOjE2NDAwODE1MTQsImV4cCI6MTY0MDE2NzkxNH0.yvIi9x-iiYoHBSy2p5j6y3kc_NJ05M0HjiuduC6em1A
+Content-Type: application/json
+
+{
+    "recipients" : ["619efeb441ef8e0336b6cada"],
+    "text" : "Hello",
+    "media" : ["oke"],
+    "call" : {}
+}
+
+###  
+post http://localhost:5000/api/v1/chat/message
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIwOGY4NGQ1MWJiZTBjYzQ3NDE0ZjUiLCJpYXQiOjE2NDAwODE1MTQsImV4cCI6MTY0MDE2NzkxNH0.yvIi9x-iiYoHBSy2p5j6y3kc_NJ05M0HjiuduC6em1A
+Content-Type: application/json
+
+{
+    "recipients" : "619efeb441ef8e0336b6cada",
+    "text" : "okoke",
+    "media" : ["upkkkdate"],
+    "call" : {},
+    "conversation" : "61c1e903229a55ecf55f793c"
+}
+###
+DELETE  http://localhost:5000/api/v1/chat/message/61c1d922067c4a50aa5f5d60
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIwOGY4NGQ1MWJiZTBjYzQ3NDE0ZjUiLCJpYXQiOjE2NDAwODE1MTQsImV4cCI6MTY0MDE2NzkxNH0.yvIi9x-iiYoHBSy2p5j6y3kc_NJ05M0HjiuduC6em1A
+
+### 
+get http://localhost:5000/api/v1/chat/message/619efeb441ef8e0336b6cada
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIwOGY4NGQ1MWJiZTBjYzQ3NDE0ZjUiLCJpYXQiOjE2NDAwODE1MTQsImV4cCI6MTY0MDE2NzkxNH0.yvIi9x-iiYoHBSy2p5j6y3kc_NJ05M0HjiuduC6em1A
+
+###
+get http://localhost:5000/api/v1/chat/conversation
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIwOGY4NGQ1MWJiZTBjYzQ3NDE0ZjUiLCJpYXQiOjE2NDAwODE1MTQsImV4cCI6MTY0MDE2NzkxNH0.yvIi9x-iiYoHBSy2p5j6y3kc_NJ05M0HjiuduC6em1A

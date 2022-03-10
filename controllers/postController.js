@@ -193,7 +193,7 @@ class PostController {
 
   async getDiscoverPosts(req, res) {
     const user = await User.findById(req.userID);
-    const num = parseInt(req.query.num) || 10;
+    const num = parseInt(req.query.num) || 30;
     const posts = await Post.aggregate([
       { $match: { user: { $nin: [...user.following, user._id] } } },
       { $sample: { size: num } },

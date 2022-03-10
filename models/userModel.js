@@ -64,6 +64,7 @@ const user = new Schema(
         ref: "user",
       },
     ],
+    role: { type: Number, enum: [0, 1, 2], default: 0 },
     saved: [{ type: mongoose.Types.ObjectId, ref: "post" }],
   },
   {

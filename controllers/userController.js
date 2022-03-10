@@ -11,9 +11,10 @@ class UserController {
 
   async searchUser(req, res) {
     const users = await User.find({
-      fullname: {
-        $regex: req.query.search,
-      },
+      $or: [
+        { fullname: new RegExp(req.query.search, "i") },
+        { slug: new RegExp(req.query.search, "i") },
+      ],
     })
       .select("fullname avatar slug")
       .limit(10)
