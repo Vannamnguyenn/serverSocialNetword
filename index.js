@@ -9,11 +9,6 @@ const socketIO = require("socket.io");
 const handleSocket = require("./socket");
 const { PeerServer } = require("peer");
 
-const origin =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:3000"
-    : "https://social-network-app-fake.netlify.app";
-
 app.use(express.json());
 app.use(
   cors({
@@ -22,6 +17,7 @@ app.use(
       "https://social-network-app-fake.netlify.app",
       "http://localhost:3000",
       "http://192.168.43.99:3000",
+      "https://social-connect-world.netlify.app",
     ],
   })
 );
@@ -40,6 +36,7 @@ const server = app.listen(PORT, () => {
         "https://social-network-app-fake.netlify.app",
         "http://localhost:3000",
         "http://192.168.43.99:3000",
+        "https://social-connect-world.netlify.app",
       ],
     },
   }).on("connection", (socket) => {
