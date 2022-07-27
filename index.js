@@ -13,12 +13,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: [
-      "https://social-network-app-fake.netlify.app",
-      "http://localhost:3000",
-      "http://192.168.43.99:3000",
-      "https://social-connect-world.netlify.app",
-    ],
+    origin: ["http://localhost:3000", "https://social-connect-world.netlify.app"],
   })
 );
 app.use(cookieParser());
@@ -32,12 +27,7 @@ PeerServer({ port: 3001, path: "/" });
 const server = app.listen(PORT, () => {
   socketIO(server, {
     cors: {
-      origin: [
-        "https://social-network-app-fake.netlify.app",
-        "http://localhost:3000",
-        "http://192.168.43.99:3000",
-        "https://social-connect-world.netlify.app",
-      ],
+      origin: ["http://localhost:3000", "https://social-connect-world.netlify.app"],
     },
   }).on("connection", (socket) => {
     console.log("A new user connected : " + socket.id);
